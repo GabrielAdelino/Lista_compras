@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lista_compras/pages/registration_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -61,6 +62,26 @@ class HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
+                  const SizedBox(height: 20), //Espaçamneto entro botão e link cadastro
+                  TextButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RegistrationPage()),
+                        );
+                      // Ação do link de cadastro
+                    },
+                    child: const Text(
+                      'Não tem Cadastro? faça já',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.white,
+                        
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),
