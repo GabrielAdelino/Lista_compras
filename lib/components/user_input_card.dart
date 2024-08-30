@@ -69,18 +69,68 @@ void dispose() {
                   ),
                 ),
                 SizedBox(width: 16.0), // Espaço entre o TextField e a Checkbox
-                Checkbox(
+                CustomCheckbox(
                   value: _isChecked,
                   onChanged: (bool? value) {
                     setState(() {
                       _isChecked = value ?? false;
                     });
                   },
+                  icon: Icons.check_circle,
+                  iconSize: 24.0,
+                  activeColor: const Color.fromARGB(255, 26, 211, 35),
+                  checkColor: Colors.white,
                 ),
               ],
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CustomCheckbox extends StatelessWidget {
+  final bool value;
+  final Function(bool?) onChanged;
+  final IconData icon;
+  final double iconSize;
+  final Color activeColor;
+  final Color checkColor;
+
+  CustomCheckbox({
+    required this.value,
+    required this.onChanged,
+    required this.icon,
+    this.iconSize = 24.0,
+    this.activeColor = Colors.blue,
+    this.checkColor = Colors.white,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        onChanged(!value);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: value ? activeColor : Colors.grey.withOpacity(0.5),
+          border: Border.all(
+            color: value ? activeColor : Colors.grey.withOpacity(0.5),
+            width: 2.0,
+          ),
+        ),
+        width: iconSize + 12.0,
+        height: iconSize + 12.0,
+        child: value
+            ? Icon(
+                icon,
+                size: iconSize,
+                color: checkColor,
+              )
+            : null,
       ),
     );
   }
