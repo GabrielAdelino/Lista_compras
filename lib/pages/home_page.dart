@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lista_compras/components/user_input_card.dart';
+import 'package:lista_compras/pages/list_page.dart';
 import 'package:lista_compras/pages/registration_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -41,7 +43,10 @@ class HomePageState extends State<HomePage> {
                 // Botão de acesso com seta e sombra
                 ElevatedButton(
                   onPressed: () {
-                    // Ação do botão
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => UserInputCard(title: '',)),
+                        );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white70, // Cor de fundo do botão
