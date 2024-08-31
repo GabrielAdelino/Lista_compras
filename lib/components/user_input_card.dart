@@ -55,7 +55,7 @@ void dispose() {
                     focusNode: _focusNode,
                     decoration: InputDecoration(
                       hintText: 'Adicione um item',
-                      border: InputBorder.none,
+                      border: OutlineInputBorder(), 
                       prefixIcon: _focusNode.hasFocus
                           ? Icon(Icons.local_mall_rounded)
                           : null,
