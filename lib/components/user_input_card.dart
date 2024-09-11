@@ -55,7 +55,7 @@ void dispose() {
                     focusNode: _focusNode,
                     decoration: InputDecoration(
                       hintText: 'Adicione um item',
-                      border: OutlineInputBorder(), 
+                      border: OutlineInputBorder(),
                       prefixIcon: _focusNode.hasFocus
                           ? Icon(Icons.local_mall_rounded)
                           : null,
@@ -83,6 +83,11 @@ void dispose() {
                 ),
               ],
             ),
+               SizedBox(height: 8.0), // Espaço após a Row
+            Divider( // Linha abaixo do input e checkbox
+              color: Colors.grey[600],
+              thickness: 2.0,
+            ),
           ],
         ),
       ),
@@ -98,7 +103,7 @@ class CustomCheckbox extends StatelessWidget {
   final Color activeColor;
   final Color checkColor;
 
-  CustomCheckbox({
+  const CustomCheckbox({super.key, 
     required this.value,
     required this.onChanged,
     required this.icon,

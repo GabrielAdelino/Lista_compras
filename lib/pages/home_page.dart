@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lista_compras/components/user_input_card.dart';
+import 'package:lista_compras/pages/list_page.dart';
 // import 'package:lista_compras/pages/list_page.dart';
 import 'package:lista_compras/pages/registration_page.dart';
 
@@ -45,7 +45,7 @@ class HomePageState extends State<HomePage> {
                   onPressed: () {
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => UserInputCard(title: '',)),
+                        MaterialPageRoute(builder: (context) => ListPage()),
                         );
                   },
                   style: ElevatedButton.styleFrom(
