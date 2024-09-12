@@ -24,21 +24,24 @@ class ListPage extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.all(20),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 350.0, width: 270,), // Espaço para o botão de fechar
-                            Text(
-                              'Crie sua lista',111111111111111111111
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 10.0),
-                            // Adicionar os widgets que vai utilizar dentro do card
-                          ],
+                        child: Container(
+                          height: 350,
+                          width: 270,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 25),
+                              Text(
+                                'Título da Lista',
+
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                            ],
+                          ),
                         ),
                       ),
                       Positioned(
