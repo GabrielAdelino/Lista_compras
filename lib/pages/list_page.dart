@@ -25,21 +25,67 @@ class ListPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.all(20),
                         child: Container(
-                          height: 350,
-                          width: 270,
+                          height: 410,
+                          width: 290,
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              SizedBox(height: 25),
+                              SizedBox(height: 30),
+                              Row(
+                                children: [
+                              Icon(
+                                Icons.panorama_fish_eye_rounded,
+                                ),
+                                SizedBox(width: 5),
                               Text(
-                                'Título da Lista',
-
+                                'Crie a sua Lista',
                                   style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,    
                                   ),
                                 ),
+                                ],
+                              ),
+                                SizedBox(height: 20),
+                                TextFormField(
+                                  //controller: _namelist,
+                                  decoration: const InputDecoration(
+                                    labelText: 'Nomeie sua lista',
+                                         border: OutlineInputBorder(),
+                                  ),
+                                ),
+
+                                SizedBox(height: 13),
+
+                                  DropdownButtonFormField<String>(
+                                    //value: _selectedOption,
+                                     decoration: InputDecoration(
+                                      labelText: 'Selecione uma opção',
+                                      border: OutlineInputBorder(),
+                                     ),
+                                     items: [
+                                       DropdownMenuItem(
+                                          value: 'Mercado',
+                                          child: Text('Mercado'),
+                                       ),
+                                        DropdownMenuItem(
+                                          value: 'Farmaácia',
+                                          child: Text('Farmácia'),
+                                       ),
+                                        DropdownMenuItem(
+                                          value: 'Variados',
+                                          child: Text('Variados'),
+                                       ),
+                                     ],
+                                     onChanged: (value) {
+                                        //setState(() 
+                                           // _selectedOption = value!;
+                                        //)};
+                                     },
+                                    ),
+                                     SizedBox(height: 20),
+                                //Adicionar os novos inputs apartir daqui 
                             ],
                           ),
                         ),
@@ -48,7 +94,7 @@ class ListPage extends StatelessWidget {
                         top: 3,
                         left: 0,
                         child: IconButton(
-                          icon: Icon(Icons.close),
+                          icon: Icon(Icons.close), // panorama_fish_eye_rounded
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
