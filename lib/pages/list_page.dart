@@ -41,7 +41,8 @@ class ListPage extends StatelessWidget {
                               Text(
                                 'Crie a sua Lista',
                                   style: TextStyle(
-                                    fontSize: 22,
+                                    fontFamily: 'Open Sans',
+                                    fontSize: 25,
                                     fontWeight: FontWeight.bold,    
                                   ),
                                 ),
