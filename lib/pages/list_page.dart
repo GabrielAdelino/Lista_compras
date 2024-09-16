@@ -12,10 +12,21 @@ class ListPage extends StatelessWidget {
         padding: EdgeInsets.only(left: 20, top: 15, right: 50, bottom: 15),
         child: Container(
           height: 50,
+          width: 350,
           decoration: BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.circular(8),
           ),
+         child: Padding(
+              padding: EdgeInsets.fromLTRB(50, 10, 10, 10),
+              child: Text('Nome Lista',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontFamily: 'Roboto',
+            ),
+            ),
+         ),
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -157,7 +168,8 @@ class ListPage extends StatelessWidget {
                         top: 3,
                         left: 0,
                         child: IconButton(
-                          icon: Icon(Icons.close), // panorama_fish_eye_rounded
+                          icon: Icon(Icons.close),
+                           // panorama_fish_eye_rounded
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
@@ -171,8 +183,23 @@ class ListPage extends StatelessWidget {
           );
         },
         backgroundColor: Colors.blue,
-        icon: Icon(Icons.add),
-        label: Text('Criar Lista'),
+        icon: Icon(
+          Icons.add,
+          color: Colors.white,
+          ),
+        label: Row(
+          children: [
+            Text(
+             'Criar Lista',
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Roboto',
+                fontSize: 15,
+                fontWeight: FontWeight.bold, 
+             ),
+            ),
+           ],
+          ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
