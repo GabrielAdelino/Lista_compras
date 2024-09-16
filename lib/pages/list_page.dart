@@ -7,7 +7,16 @@ class ListPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('List Page'),
       ),
-      body: Center(
+      body: Container(
+        alignment: Alignment.topLeft,
+        padding: EdgeInsets.only(left: 20, top: 15, right: 50, bottom: 15),
+        child: Container(
+          height: 50,
+          decoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(8),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
@@ -41,29 +50,41 @@ class ListPage extends StatelessWidget {
                               Text(
                                 'Crie a sua Lista',
                                   style: TextStyle(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 25,
+                                    fontFamily: 'Roboto',
+                                    fontSize: 22,
                                     fontWeight: FontWeight.bold,    
                                   ),
                                 ),
                                 ],
                               ),
+                              Container(
+                                height: 5,
+                                width: 205,
+                                decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
                                 SizedBox(height: 20),
                                 TextFormField(
                                   //controller: _namelist,
-                                  decoration: const InputDecoration(
+                                  decoration: InputDecoration(
                                     labelText: 'Nomeie sua lista',
-                                         border: OutlineInputBorder(),
+                                         border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                         ),
                                   ),
                                 ),
 
-                                SizedBox(height: 13),
+                                SizedBox(height: 15),
 
                                   DropdownButtonFormField<String>(
                                     //value: _selectedOption,
                                      decoration: InputDecoration(
                                       labelText: 'Selecione uma opção',
-                                      border: OutlineInputBorder(),
+                                      border: OutlineInputBorder(
+                                         borderRadius: BorderRadius.circular(10),
+                                      ),
                                      ),
                                      items: [
                                        DropdownMenuItem(
@@ -86,6 +107,47 @@ class ListPage extends StatelessWidget {
                                      },
                                     ),
                                      SizedBox(height: 20),
+
+                                    TextFormField(
+                                      maxLines: 3,
+                                      decoration: InputDecoration(
+                                        labelText: 'Descrição',
+                                        alignLabelWithHint: true,
+                                         border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                         ),
+                                      ),
+                                    ),
+
+                                      SizedBox(height: 13),
+
+                                    SizedBox(
+                                    height: 45,
+                                    width: double.infinity,
+                                    child: ElevatedButton.icon(
+                                       onPressed: () {
+                                        //Ação de redirecionar
+                                       },
+                                       icon: Icon(
+                                        Icons.library_books_sharp,
+                                        color: Colors.white,
+                                        ),
+
+                                       label: Text(
+                                        'Adicionar',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontFamily: 'Roboto',
+                                          fontWeight: FontWeight.bold,    
+                                        ),
+                                        ),
+
+                                       style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blue,
+                                       ),
+                                    ),
+                                  ),
                                 //Adicionar os novos inputs apartir daqui 
                             ],
                           ),
