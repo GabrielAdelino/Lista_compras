@@ -11,22 +11,50 @@ class ListPage extends StatelessWidget {
         alignment: Alignment.topLeft,
         padding: EdgeInsets.only(left: 20, top: 15, right: 50, bottom: 15),
         child: Container(
-          height: 50,
-          width: 350,
           decoration: BoxDecoration(
+            color: Colors.grey.shade300,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          padding: EdgeInsets.all(10),
+        child: Row(
+        children: [ 
+              Container(
+        height: 50,
+        width: 50, // Define a largura do container do ícone
+        decoration: BoxDecoration(
           color: Colors.blue,
           borderRadius: BorderRadius.circular(8),
+        ),
+        child: Icon(
+          Icons.list_alt,
+          color: Colors.white,
+        ),
+      ),
+          SizedBox(width: 10),
+          Container(
+              height: 50,
+              width: 250,
+              decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: Colors.black,
+                width: 3,
+              )
           ),
          child: Padding(
-              padding: EdgeInsets.fromLTRB(50, 10, 10, 10),
+              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
               child: Text('Nome Lista',
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontSize: 16,
               fontFamily: 'Roboto',
             ),
             ),
          ),
+        ),
+        ],
+      ),
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
