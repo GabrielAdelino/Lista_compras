@@ -51,12 +51,12 @@ class ListPage extends StatelessWidget {
          SizedBox(width: 40),
       Container(
   decoration: BoxDecoration(
-    color: Colors.blue, // Cor de fundo
+    color: Colors.grey.shade100, // Cor de fundo
     borderRadius: BorderRadius.circular(8), // Arredondamento da borda
   ),
   child: IconButton(
     icon: Icon(Icons.edit_sharp, 
-    color: Colors.white), // Ícone com cor branca
+    color: Colors.black), // Ícone com cor branca
     onPressed: () {
       // Ação do botão
     },
