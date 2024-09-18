@@ -9,7 +9,7 @@ class ListPage extends StatelessWidget {
       ),
       body: Container(
         alignment: Alignment.topLeft,
-        padding: EdgeInsets.only(left: 20, top: 15, right: 50, bottom: 15),
+        padding: EdgeInsets.only(left: 20, top: 15, right: 20, bottom: 15),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.grey.shade300,
@@ -31,20 +31,16 @@ class ListPage extends StatelessWidget {
         ),
       ),
           SizedBox(width: 10),
-          Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                color: Colors.black,
-                width: 3,
-              )
-          ),
-         child: Padding(
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              child: Text('Nome Lista',
+
+         Container( //Linha que divide Icon e Text
+              height: 40,
+              width: 2, 
+              color: Colors.grey,
+            ),
+
+         Padding(
+              padding: EdgeInsets.fromLTRB(6, 10, 10, 10),
+              child: Text('Compras de Setembro',
             style: TextStyle(
               color: Colors.black,
               fontSize: 16,
@@ -52,7 +48,20 @@ class ListPage extends StatelessWidget {
             ),
             ),
          ),
-        ),
+         SizedBox(width: 40),
+      Container(
+  decoration: BoxDecoration(
+    color: Colors.blue, // Cor de fundo
+    borderRadius: BorderRadius.circular(8), // Arredondamento da borda
+  ),
+  child: IconButton(
+    icon: Icon(Icons.edit_sharp, 
+    color: Colors.white), // Ícone com cor branca
+    onPressed: () {
+      // Ação do botão
+    },
+  ),
+), //Colocar o Icone aqui
         ],
       ),
         ),
