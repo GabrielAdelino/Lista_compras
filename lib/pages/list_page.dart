@@ -1,70 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:lista_compras/components/card_list.dart';
+ // Certifique-se de importar o arquivo onde está o CardList
 
-class ListPage extends StatelessWidget {
+class ListPage extends StatefulWidget {
+  @override
+  _ListPageState createState() => _ListPageState();
+}
+
+class _ListPageState extends State<ListPage> {
+  List<CardList> cardListItems = [];
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  String? selectedOption;
+
+  void _addCard() {
+    setState(() {
+      // Adiciona um novo CardList com base nas informações fornecidas
+      cardListItems.add(
+        CardList(
+          title: nameController.text, // Nome da lista
+          icon: Icons.list_alt, // Ícone pode ser fixo ou ajustável
+          onEdit: () {
+            // Ação de edição
+          },
+        ),
+      );
+    });
+
+    // Limpa os campos após adicionar
+    nameController.clear();
+    descriptionController.clear();
+    selectedOption = null;
+    Navigator.of(context).pop(); // Fecha o dialogo após adicionar
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('List Page'),
       ),
-      body: Container(
-        alignment: Alignment.topLeft,
-        padding: EdgeInsets.only(left: 20, top: 15, right: 20, bottom: 15),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.grey.shade300,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          padding: EdgeInsets.all(10),
-        child: Row(
-        children: [ 
-              Container(
-        height: 50,
-        width: 50, // Define a largura do container do ícone
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Icon(
-          Icons.list_alt,
-          color: Colors.white,
-        ),
-      ),
-          SizedBox(width: 10),
-
-         Container( //Linha que divide Icon e Text
-              height: 40,
-              width: 2, 
-              color: Colors.grey,
-            ),
-
-         Padding(
-              padding: EdgeInsets.fromLTRB(6, 10, 10, 10),
-              child: Text('Compras de Setembro',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-              fontFamily: 'Roboto',
-            ),
-            ),
-         ),
-         SizedBox(width: 40),
-      Container(
-  decoration: BoxDecoration(
-    color: Colors.grey.shade100, // Cor de fundo
-    borderRadius: BorderRadius.circular(8), // Arredondamento da borda
-  ),
-  child: IconButton(
-    icon: Icon(Icons.edit_sharp, 
-    color: Colors.black), // Ícone com cor branca
-    onPressed: () {
-      // Ação do botão
-    },
-  ),
-), //Colocar o Icone aqui
+      body: ListView(
+        children: [
+          ...cardListItems, // Exibe os itens da lista de cards
         ],
-      ),
-        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
@@ -91,18 +70,18 @@ class ListPage extends StatelessWidget {
                               SizedBox(height: 30),
                               Row(
                                 children: [
-                              Icon(
-                                Icons.panorama_fish_eye_rounded,
-                                ),
-                                SizedBox(width: 5),
-                              Text(
-                                'Crie a sua Lista',
-                                  style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold,    
+                                  Icon(
+                                    Icons.panorama_fish_eye_rounded,
                                   ),
-                                ),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    'Crie a sua Lista',
+                                    style: TextStyle(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ],
                               ),
                               Container(
@@ -110,93 +89,84 @@ class ListPage extends StatelessWidget {
                                 width: 205,
                                 decoration: BoxDecoration(
                                   color: Colors.blue,
-                                borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
                               ),
-                                SizedBox(height: 20),
-                                TextFormField(
-                                  //controller: _namelist,
-                                  decoration: InputDecoration(
-                                    labelText: 'Nomeie sua lista',
-                                         border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10),
-                                         ),
+                              SizedBox(height: 20),
+                              TextFormField(
+                                controller: nameController, // Controlador do campo
+                                decoration: InputDecoration(
+                                  labelText: 'Nomeie sua lista',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-
-                                SizedBox(height: 15),
-
-                                  DropdownButtonFormField<String>(
-                                    //value: _selectedOption,
-                                     decoration: InputDecoration(
-                                      labelText: 'Selecione uma opção',
-                                      border: OutlineInputBorder(
-                                         borderRadius: BorderRadius.circular(10),
-                                      ),
-                                     ),
-                                     items: [
-                                       DropdownMenuItem(
-                                          value: 'Mercado',
-                                          child: Text('Mercado'),
-                                       ),
-                                        DropdownMenuItem(
-                                          value: 'Farmaácia',
-                                          child: Text('Farmácia'),
-                                       ),
-                                        DropdownMenuItem(
-                                          value: 'Variados',
-                                          child: Text('Variados'),
-                                       ),
-                                     ],
-                                     onChanged: (value) {
-                                        //setState(() 
-                                           // _selectedOption = value!;
-                                        //)};
-                                     },
-                                    ),
-                                     SizedBox(height: 20),
-
-                                    TextFormField(
-                                      maxLines: 3,
-                                      decoration: InputDecoration(
-                                        labelText: 'Descrição',
-                                        alignLabelWithHint: true,
-                                         border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10),
-                                         ),
-                                      ),
-                                    ),
-
-                                      SizedBox(height: 13),
-
-                                    SizedBox(
-                                    height: 45,
-                                    width: double.infinity,
-                                    child: ElevatedButton.icon(
-                                       onPressed: () {
-                                        //Ação de redirecionar
-                                       },
-                                       icon: Icon(
-                                        Icons.library_books_sharp,
-                                        color: Colors.white,
-                                        ),
-
-                                       label: Text(
-                                        'Adicionar',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                          fontFamily: 'Roboto',
-                                          fontWeight: FontWeight.bold,    
-                                        ),
-                                        ),
-
-                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.blue,
-                                       ),
+                              ),
+                              SizedBox(height: 15),
+                              DropdownButtonFormField<String>(
+                                value: selectedOption,
+                                decoration: InputDecoration(
+                                  labelText: 'Selecione uma opção',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                                items: [
+                                  DropdownMenuItem(
+                                    value: 'Mercado',
+                                    child: Text('Mercado'),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: 'Farmácia',
+                                    child: Text('Farmácia'),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: 'Variados',
+                                    child: Text('Variados'),
+                                  ),
+                                ],
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedOption = value;
+                                  });
+                                },
+                              ),
+                              SizedBox(height: 20),
+                              TextFormField(
+                                controller: descriptionController, // Controlador para a descrição
+                                maxLines: 3,
+                                decoration: InputDecoration(
+                                  labelText: 'Descrição',
+                                  alignLabelWithHint: true,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 13),
+                              SizedBox(
+                                height: 45,
+                                width: double.infinity,
+                                child: ElevatedButton.icon(
+                                  onPressed: _addCard, // Função para adicionar o card
+                                  icon: Icon(
+                                    Icons.library_books_sharp,
+                                    color: Colors.white,
+                                  ),
+                                  label: Text(
+                                    'Adicionar',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                //Adicionar os novos inputs apartir daqui 
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.blue,
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -206,7 +176,6 @@ class ListPage extends StatelessWidget {
                         left: 0,
                         child: IconButton(
                           icon: Icon(Icons.close),
-                           // panorama_fish_eye_rounded
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
@@ -223,20 +192,20 @@ class ListPage extends StatelessWidget {
         icon: Icon(
           Icons.add,
           color: Colors.white,
-          ),
+        ),
         label: Row(
           children: [
             Text(
-             'Criar Lista',
+              'Criar Lista',
               style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'Roboto',
                 fontSize: 15,
-                fontWeight: FontWeight.bold, 
-             ),
+                fontWeight: FontWeight.bold,
+              ),
             ),
-           ],
-          ),
+          ],
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
