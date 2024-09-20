@@ -45,8 +45,10 @@ class CardList extends StatelessWidget {
               color: Colors.grey,
             ),
 
-         Padding(
-              padding: EdgeInsets.fromLTRB(6, 10, 10, 10),
+            SizedBox(width: 10),
+
+         Expanded(
+              //padding: EdgeInsets.fromLTRB(6, 10, 10, 10),
               child: Text(
                 title,
             style: TextStyle(
@@ -54,6 +56,7 @@ class CardList extends StatelessWidget {
               fontSize: 16,
               fontFamily: 'Roboto',
             ),
+            overflow: TextOverflow.ellipsis,
             ),
          ),
          SizedBox(width: 40),
