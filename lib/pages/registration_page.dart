@@ -52,17 +52,32 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                 ),
               ),
+
+              const SizedBox(height: 20),
+
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(150),
+                  child: Image.asset(
+                    'assets/Logo_mercado.jpeg', // Caminho da logo
+                    height: 150,
+                    width: 150,
+                  ),
+                ),
+                
+              const SizedBox(height: 20),
+
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       // Campo Nome com opacidade no fundo
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(8),
+                          color: Color(0xfff1faee).withOpacity(0.9),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextFormField(
                           controller: _nameController,
@@ -78,8 +93,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       // Campo E-mail com opacidade no fundo
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(8),
+                          color: Color(0xfff1faee).withOpacity(0.9),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextFormField(
                           controller: _emailController,
@@ -96,8 +111,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       // Campo Senha com opacidade no fundo
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(8),
+                          color: Color(0xfff1faee).withOpacity(0.9),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextFormField(
                           controller: _passwordController,
@@ -119,8 +134,31 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                           textStyle: const TextStyle(fontSize: 18),
+                          backgroundColor: Color(0xfff1faee), //Valor padrão 0xff
                         ),
-                        child: const Text('Cadastrar'),
+                        child: const SizedBox(
+                          width: double.infinity,
+                          child: Center(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.person, 
+                              color: Color(0xff007c77)
+                              ),
+                              SizedBox(width: 3),
+                              Text(
+                                'Cadastrar',
+                                style: TextStyle(
+                                  color: Color(0xff007c77),
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ]
+                          ),
+                        ),
+                        ),
                       ),
                     ],
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lista_compras/components/itens_list.dart';
 import 'package:lista_compras/pages/list_page.dart';
 // import 'package:lista_compras/pages/list_page.dart';
 import 'package:lista_compras/pages/registration_page.dart';
@@ -45,7 +46,7 @@ class HomePageState extends State<HomePage> {
                   onPressed: () {
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ListPage()),
+                        MaterialPageRoute(builder: (context) => ItensList()),
                         );
                   },
                   style: ElevatedButton.styleFrom(
