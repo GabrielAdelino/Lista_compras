@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class UserInputCard extends StatefulWidget {
   final String title;
 
-  UserInputCard({required this.title});
+  UserInputCard({required this.title, required UniqueKey key});
 
   @override
   _UserInputCardState createState() => _UserInputCardState();
@@ -32,21 +32,31 @@ void dispose() {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4.0,
-      margin: EdgeInsets.all(8.0),
+      elevation: 5.0,
+      margin: const EdgeInsets.only(
+        left: 5.0,
+        right: 5.0,
+        top: 8.0,
+        bottom: 8.0,
+        ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(
+          left: 15.0,
+          right: 15.0,
+          top: 15.0,
+          bottom: 5.0,
+          ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              widget.title,
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8.0),
+            // Text(
+            //   widget.title,
+            //   style: TextStyle(
+            //     fontSize: 18.0,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            // ),
+            //SizedBox(height: 8.0),
             Row(
               children: [
                 Expanded(
@@ -84,10 +94,10 @@ void dispose() {
               ],
             ),
                SizedBox(height: 8.0), // Espaço após a Row
-            Divider( // Linha abaixo do input e checkbox
-              color: Colors.grey[600],
-              thickness: 2.0,
-            ),
+            // Divider( // Linha abaixo do input e checkbox
+            //   color: Colors.grey[600],
+            //   thickness: 2.0,
+            // ),
           ],
         ),
       ),
