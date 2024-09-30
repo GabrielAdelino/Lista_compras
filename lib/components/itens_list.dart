@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lista_compras/components/user_input_card.dart';
-// Certifique-se de importar corretamente
 
 class ItensList extends StatefulWidget {
-  const ItensList({Key? key}) : super(key: key);
+  final String listName; // Recebe o nome da lista
+
+  const ItensList({Key? key, required this.listName}) : super(key: key);
 
   @override
   _ItensListState createState() => _ItensListState();
@@ -15,7 +16,7 @@ class _ItensListState extends State<ItensList> {
   // Função para adicionar um novo item à lista
   void _addItem() {
     setState(() {
-      _items.add('');
+      _items.add(''); // Adiciona um item vazio
     });
   }
 
@@ -29,21 +30,33 @@ class _ItensListState extends State<ItensList> {
             Navigator.pop(context); // Voltar para a página anterior
           },
         ),
-        title: const Text('Lista de Itens'),
+        title: Text(widget.listName), // Exibe o nome da lista no AppBar
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(8.0),
-        itemCount: _items.length,
-        itemBuilder: (context, index) {
-          return UserInputCard(
-            key: UniqueKey(), // Chave única para evitar conflitos de renderização
-            title: _items[index],
-          );
-        },
+     body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xff02AABD), // Começo do degradê
+              Color(0xff00CDAC),  // Final do degradê
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: ListView.builder(
+          padding: const EdgeInsets.all(8.0),
+          itemCount: _items.length,
+          itemBuilder: (context, index) {
+            return UserInputCard(
+              key: UniqueKey(), //chave unica, para evitar conflitos de renderização
+              title: _items[index],
+            );
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _addItem, // Chama a função para adicionar um novo item
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xfff17300),
         icon: const Icon(
           Icons.add,
           color: Colors.white,
@@ -57,7 +70,8 @@ class _ItensListState extends State<ItensList> {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat, // Coloca o botão no canto inferior direito
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      resizeToAvoidBottomInset: false, // Coloca o botão no canto inferior direito
     );
   }
 }

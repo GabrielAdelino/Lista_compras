@@ -168,6 +168,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
           ),
         ],
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
 }

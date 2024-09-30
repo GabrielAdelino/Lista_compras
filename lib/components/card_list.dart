@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lista_compras/components/itens_list.dart';
+
 
 class CardList extends StatelessWidget {
   final String title;
@@ -9,7 +11,7 @@ class CardList extends StatelessWidget {
     Key ? key,
     required this.title,
     required this.icon,
-    required this.onEdit,
+    required this.onEdit, required Null Function() onTap,
   }) : super(key: key);
 
   @override
@@ -32,9 +34,17 @@ class CardList extends StatelessWidget {
           color: Colors.blue,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Icon(
-          Icons.list_alt,
+        child: IconButton(
+          icon: Icon (
+            Icons.list_alt,
           color: Colors.white,
+          ),
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ItensList(listName: 'Card List',)),
+            );
+          },
         ),
       ),
           SizedBox(width: 10),

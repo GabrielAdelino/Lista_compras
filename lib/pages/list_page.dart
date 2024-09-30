@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lista_compras/components/card_list.dart';
- // Certifique-se de importar o arquivo onde está o CardList
+import 'package:lista_compras/components/itens_list.dart'; // Importa a página ItensList
 
 class ListPage extends StatefulWidget {
   @override
@@ -13,7 +13,16 @@ class _ListPageState extends State<ListPage> {
   final TextEditingController descriptionController = TextEditingController();
   String? selectedOption;
 
+  // Função para adicionar um novo card
   void _addCard() {
+    if (nameController.text.isEmpty) {
+      // Se o título estiver vazio, exibe um aviso
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('O nome da lista não pode estar vazio.')),
+      );
+      return;
+    }
+
     setState(() {
       // Adiciona um novo CardList com base nas informações fornecidas
       cardListItems.add(
@@ -21,7 +30,19 @@ class _ListPageState extends State<ListPage> {
           title: nameController.text, // Nome da lista
           icon: Icons.list_alt, // Ícone pode ser fixo ou ajustável
           onEdit: () {
-            // Ação de edição
+            // Ação de edição (pode implementar aqui)
+            print('Editando a lista: ${nameController.text}');
+          },
+          onTap: () {
+            // Ao clicar no card, navega para ItensList passando o nome da lista
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ItensList(listName: nameController.text),
+              ),
+            );
+
+            nameController.clear();
           },
         ),
       );
@@ -31,14 +52,14 @@ class _ListPageState extends State<ListPage> {
     nameController.clear();
     descriptionController.clear();
     selectedOption = null;
-    Navigator.of(context).pop(); // Fecha o dialogo após adicionar
+    Navigator.of(context).pop(); // Fecha o diálogo após adicionar
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('List Page'),
+        title: Text('Crie a sua lista'),
       ),
       body: ListView(
         children: [
@@ -70,9 +91,7 @@ class _ListPageState extends State<ListPage> {
                               SizedBox(height: 30),
                               Row(
                                 children: [
-                                  Icon(
-                                    Icons.panorama_fish_eye_rounded,
-                                  ),
+                                  Icon(Icons.panorama_fish_eye_rounded),
                                   SizedBox(width: 5),
                                   Text(
                                     'Crie a sua Lista',
