@@ -59,12 +59,30 @@ class _ListPageState extends State<ListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crie a sua lista'),
+        backgroundColor: Color.fromARGB(255, 230, 230, 230),
+        title: Text(
+          'Crie a sua lista',
+          style: TextStyle(
+                //fontWeight: FontWeight.bold,
+            ),
+          ),
       ),
-      body: ListView(
-        children: [
-          ...cardListItems, // Exibe os itens da lista de cards
-        ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xff6c9c64), // Começo do degradê
+              Color(0xff0c6b5c),  // Final do degradê
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: ListView(
+          children: [
+            ...cardListItems, // Exibe os itens da lista de cards
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
@@ -107,7 +125,7 @@ class _ListPageState extends State<ListPage> {
                                 height: 5,
                                 width: 205,
                                 decoration: BoxDecoration(
-                                  color: Colors.blue,
+                                  color: Color(0xfff17300),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                               ),
@@ -182,7 +200,7 @@ class _ListPageState extends State<ListPage> {
                                     ),
                                   ),
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blue,
+                                    backgroundColor: Color(0xfff17300),
                                   ),
                                 ),
                               ),
@@ -207,17 +225,17 @@ class _ListPageState extends State<ListPage> {
             },
           );
         },
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xfff1faee),
         icon: Icon(
           Icons.add,
-          color: Colors.white,
+          color: Colors.black,
         ),
         label: Row(
           children: [
             Text(
               'Criar Lista',
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontFamily: 'Roboto',
                 fontSize: 15,
                 fontWeight: FontWeight.bold,

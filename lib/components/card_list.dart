@@ -31,7 +31,7 @@ class CardList extends StatelessWidget {
         height: 50,
         width: 50, // Define a largura do container do ícone
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: Color(0xfff17300),
           borderRadius: BorderRadius.circular(8),
         ),
         child: IconButton(

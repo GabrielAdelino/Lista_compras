@@ -24,6 +24,7 @@ class _ItensListState extends State<ItensList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 230, 230, 230),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -36,11 +37,11 @@ class _ItensListState extends State<ItensList> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xff02AABD), // Começo do degradê
-              Color(0xff00CDAC),  // Final do degradê
+              Color.fromARGB(255, 0, 151, 168), // Começo do degradê
+              Color.fromARGB(255, 149, 216, 205),  // Final do degradê
             ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: ListView.builder(
@@ -56,15 +57,15 @@ class _ItensListState extends State<ItensList> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _addItem, // Chama a função para adicionar um novo item
-        backgroundColor: Color(0xfff17300),
+        backgroundColor: Color(0xfff1faee),
         icon: const Icon(
           Icons.add,
-          color: Colors.white,
+          color: Colors.black,
         ),
         label: const Text(
           'Add item',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
             fontSize: 15,
             fontWeight: FontWeight.bold,
           ),
