@@ -23,16 +23,65 @@ class _ItensListState extends State<ItensList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 230, 230, 230),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context); // Voltar para a página anterior
-          },
-        ),
-        title: Text(widget.listName), // Exibe o nome da lista no AppBar
+     appBar: PreferredSize(
+  preferredSize: const Size.fromHeight(188.0), // Define a altura do AppBar
+  child: AppBar(
+    backgroundColor: Color.fromARGB(255, 230, 230, 230),
+    leading: IconButton(
+      icon: const Icon(Icons.arrow_back),
+      onPressed: () {
+        Navigator.pop(context); // Voltar para a página anterior
+      },
+    ),
+    title: Text(widget.listName), // Exibe o nome da lista no AppBar
+    flexibleSpace: Padding(
+      padding: const EdgeInsets.only(top: 60.0), // Ajusta o espaçamento
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, // Alinha os itens à esquerda
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0, top: 15, right: 16),
+            child: TextFormField(
+             decoration:  InputDecoration(
+                labelText: 'Descrição',
+                fillColor: Color(0xfff1faee).withOpacity(0.9),
+                border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
+                //borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 12), // Espaçamento entre o campo de descrição e o Dropdown
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: DropdownButtonFormField<String>(
+             decoration:  InputDecoration(
+                labelText: 'Selecione uma opção',
+                fillColor: Color(0xfff1faee).withOpacity(0.9),
+                border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
+                //borderSide: BorderSide.none,
+                ),
+              ),
+              items: <String>['Mercado', 'Farmácia', 'Variados']
+                  .map((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                // Ação ao selecionar um item
+              },
+            ),
+          ),
+        ],
       ),
+    ),
+  ),
+),
+
      body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(

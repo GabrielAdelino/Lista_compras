@@ -23,6 +23,22 @@ class _ListPageState extends State<ListPage> {
       return;
     }
 
+     // Verificação do campo descrição
+    if (descriptionController.text.isEmpty){
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Campo descrição não pode estar vazio.')),
+      );
+      return;
+    }
+
+    //Verficação do campo tipo lista
+    if (selectedOption == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Selecione o tipo da lista.')),
+      );
+      return;
+    }
+
     setState(() {
       // Adiciona um novo CardList com base nas informações fornecidas
       cardListItems.add(
@@ -30,7 +46,7 @@ class _ListPageState extends State<ListPage> {
           title: nameController.text, // Nome da lista
           icon: Icons.list_alt, // Ícone pode ser fixo ou ajustável
           onEdit: () {
-            // Ação de edição (pode implementar aqui)
+            // Ação de edição (implementar aqui)
             print('Editando a lista: ${nameController.text}');
           },
           onTap: () {
